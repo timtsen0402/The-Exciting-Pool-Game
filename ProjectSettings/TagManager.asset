@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - floor
+  - wall
+  - outside
+  - hole
+  - buttom
+  - cue_ball
+  - DontDestroy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - CueStick
+  - Water
+  - UI
+  - Balls
+  - WholePool
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 2405327997
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 3723478399
+    locked: 0
