@@ -7,7 +7,7 @@ using static AudioManager;
 
 public class GameController : MonoBehaviour
 {
-    
+
     #region The most basic objects for every script
     public static GameObject table;
     public static GameObject Panel;
@@ -48,9 +48,9 @@ public class GameController : MonoBehaviour
     public static bool otherIsMove = false;
     public static bool isNewTurn = true;
     public static bool isAnyoneWin = false;
-    public static bool a = true; //¬°¤FÅý·s¦^¦X«ü¥O¥u°µ¤@¦¸
-    public static bool b = true; //Á×§K¥´¥X«áª½±µ¥Ç³W
-    public static bool c = true; //¬°¤FÅýµ²§ô«ü¥O¥u°µ¤@¦¸
+    public static bool a = true; //ï¿½ï¿½ï¿½Fï¿½ï¿½ï¿½sï¿½^ï¿½Xï¿½ï¿½ï¿½Oï¿½uï¿½ï¿½ï¿½@ï¿½ï¿½
+    public static bool b = true; //ï¿½×§Kï¿½ï¿½ï¿½Xï¿½áª½ï¿½ï¿½ï¿½Ç³W
+    public static bool c = true; //ï¿½ï¿½ï¿½Fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½uï¿½ï¿½ï¿½@ï¿½ï¿½
 
     bool Player1_turn = true;
     bool Player2_turn = false;
@@ -85,13 +85,13 @@ public class GameController : MonoBehaviour
 
         if (!isAnyoneWin)
             foulCount.text = "Foul Count      P1 : " + P1_foulCount + "/ " + loseFoulCount + "    P2 : " + P2_foulCount + "/ " + loseFoulCount;
-        //¶}²y«á¨ú®ø¶}²y½u
+        //ï¿½}ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½}ï¿½yï¿½u
         if (Hit_n_times != 0) start_line.enabled = false;
-        //²y¬O§_¤J³U
+        //ï¿½yï¿½Oï¿½_ï¿½Jï¿½U
         Ball_Statement();
-        //¶i¤J¤U¦^¦X
+        //ï¿½iï¿½Jï¿½Uï¿½^ï¿½X
         New_Turn();
-        //¶i¤J³Ó§QUI
+        //ï¿½iï¿½Jï¿½Ó§QUI
         WinUI();
     }
     void Ball_Statement()
@@ -103,7 +103,7 @@ public class GameController : MonoBehaviour
 
         for (int i = 0; i < Balls.Count; i++)
         {
-            //­Y²y¤J³U
+            //ï¿½Yï¿½yï¿½Jï¿½U
             if (Balls[i].transform.position.y < 12.5f && Balls[i].transform.position.y > 12f &&
                 boundOfpool_x1 - 2.5f < Balls[i].transform.position.x && Balls[i].transform.position.x < boundOfpool_x2 + 2.5f &&
                 boundOfpool_z1 - 2.5f < Balls[i].transform.position.z && Balls[i].transform.position.z < boundOfpool_z2 + 2.5f)
@@ -115,7 +115,7 @@ public class GameController : MonoBehaviour
                 holeBalls_image2D.Add(Balls_images2D[i]);
                 holeBalls_rb.Add(Balls_rb[i]);
             }
-            //­Y²y¼Q­¸(¥Ç³W)
+            //ï¿½Yï¿½yï¿½Qï¿½ï¿½(ï¿½Ç³W)
             if (boundOfpool_x1 - 2.5f > Balls[i].transform.position.x || Balls[i].transform.position.x > boundOfpool_x2 + 2.5f ||
                  boundOfpool_z1 - 2.5f > Balls[i].transform.position.z || Balls[i].transform.position.z > boundOfpool_z2 + 2.5f)
             {
@@ -133,9 +133,9 @@ public class GameController : MonoBehaviour
         if (Ball_isMoving())
             return;
 
-        if (a && b) //À»¥´«e(·s¦^¦X¶}©l)a,b¬Ò¬°true
+        if (a && b) //ï¿½ï¿½ï¿½ï¿½ï¿½e(ï¿½sï¿½^ï¿½Xï¿½}ï¿½l)a,bï¿½Ò¬ï¿½true
         {
-            Debug.Log("New Turn");
+            //Debug.Log("New Turn");
             isNewTurn = true;
             if (isInHole)
             {
@@ -152,7 +152,7 @@ public class GameController : MonoBehaviour
                 }
             }
 
-            //¥X²y«á¥¼¸I¥ô¦ó²y(¥Ç³W)
+            //ï¿½Xï¿½yï¿½á¥¼ï¿½Iï¿½ï¿½ï¿½ï¿½y(ï¿½Ç³W)
             if (!hasTouched && Hit_n_times > 0)
             {
                 Debug.Log("foul (no touching)");
@@ -162,7 +162,7 @@ public class GameController : MonoBehaviour
                 Check_Victory();
                 TakeTurn();
             }
-            //­Y9¸¹²y»P¥À²y¦P®É¤J³U(¥Ç³W¡A9¸¹²y­«¸m)
+            //ï¿½Y9ï¿½ï¿½ï¿½yï¿½Pï¿½ï¿½ï¿½yï¿½Pï¿½É¤Jï¿½U(ï¿½Ç³Wï¿½A9ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½m)
             else if (!Ace.activeSelf && CueBall.transform.position.y < 10.5f)
             {
                 Debug.Log("foul (9Ball &cueBall dropped down simultaneously)");
@@ -182,7 +182,7 @@ public class GameController : MonoBehaviour
 
             }
 
-            //¥À²y¥¼¥ý¸I«ü©w²y(¥Ç³W)
+            //ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½wï¿½y(ï¿½Ç³W)
             else if (hasTouched && isFoul)
             {
                 Debug.Log("foul (hit wrong ball)");
@@ -214,7 +214,7 @@ public class GameController : MonoBehaviour
                 TakeTurn();
 
             }
-            //¥¼¥Ç³W¥B¥¼¶i -> ´«¤H
+            //ï¿½ï¿½ï¿½Ç³Wï¿½Bï¿½ï¿½ï¿½i -> ï¿½ï¿½ï¿½H
             else if ((!isOut && !isInHole) && Hit_n_times != 0)
             {
                 Debug.Log("no foul and take turn");
@@ -226,9 +226,9 @@ public class GameController : MonoBehaviour
                 Debug.Log("good job! keep it up");
                 Check_Victory();
             }
-            //¨C­Ó¦^¦Xµ²§ô®Éªº°ò¥»³]©w
+            //ï¿½Cï¿½Ó¦^ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½Éªï¿½ï¿½ò¥»³]ï¿½w
             Check_Victory();
-            CueBall.transform.localEulerAngles = Zero3;     //­«¾ãxyz¶b
+            CueBall.transform.localEulerAngles = Zero3;     //ï¿½ï¿½ï¿½ï¿½xyzï¿½b
             hasTouched = false;
             isFoul = false;
             isInHole = false;
@@ -239,9 +239,9 @@ public class GameController : MonoBehaviour
             outBalls.Clear();
             outBalls_image2D.Clear();
             outBalls_rb.Clear();
-            a = false; //ÀR¤î®É¥u°õ¦æ¤@¦¸
+            a = false; //ï¿½Rï¿½ï¿½É¥uï¿½ï¿½ï¿½ï¿½@ï¿½ï¿½
 
-            //***²{¦b¥i¥H¥X±ì***//
+            //***ï¿½{ï¿½bï¿½iï¿½Hï¿½Xï¿½ï¿½***//
 
         }
         b = true;
@@ -253,7 +253,7 @@ public class GameController : MonoBehaviour
         else cueIsMove = true;
 
         Vector3 temp = Zero3;
-        //³v¤@¬d§ä
+        //ï¿½vï¿½@ï¿½dï¿½ï¿½
         for (int i = 0; i < Balls_rb.Count; i++)
         {
             if (Balls_rb[i].velocity.magnitude < 0.1f)
@@ -279,9 +279,9 @@ public class GameController : MonoBehaviour
         else turn.text = "P2's Turn";
     }
 
-    void Check_Victory() //³Ó§Q§P©w
+    void Check_Victory() //ï¿½Ó§Qï¿½Pï¿½w
     {
-        print("enter Check_Victory");
+        //print("enter Check_Victory");
 
         if (P1_foulCount == loseFoulCount) Winner(2);
         if (P2_foulCount == loseFoulCount) Winner(1);
@@ -293,7 +293,7 @@ public class GameController : MonoBehaviour
 
             if (Player1_turn)
             {
-                print("enter Player1_turn");
+                //print("enter Player1_turn");
                 if (!isFoul)
                     Winner(1);
                 else
@@ -339,7 +339,7 @@ public class GameController : MonoBehaviour
         else
             P2_foulCount++;
 
-        //®Ú¾Ú¥Ç³W¦¸¼Æ§ïÅÜ¦rÅéÃC¦â
+        //ï¿½Ú¾Ú¥Ç³Wï¿½ï¿½ï¿½Æ§ï¿½ï¿½Ü¦rï¿½ï¿½ï¿½Cï¿½ï¿½
         if (P1_foulCount == (loseFoulCount - 1) || P2_foulCount == (loseFoulCount - 1))
             foulCount.color = Color.yellow;
 
@@ -395,7 +395,7 @@ public class GameController : MonoBehaviour
     }
     void AllStop()
     {
-        //±j¨î°±¤î
+        //ï¿½jï¿½î°±ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.P))
         {
             for (int i = 0; i < Balls_rb.Count; i++)
@@ -420,7 +420,7 @@ public class GameController : MonoBehaviour
         Hit_n_times = 0;
         freeBallTime = true;
 
-        //¥[¸ü²y¹Ï¥Ü
+        //ï¿½[ï¿½ï¿½ï¿½yï¿½Ï¥ï¿½
         Balls_images2D.Add(GameObject.Find("Image1"));
         Balls_images2D.Add(GameObject.Find("Image2"));
         Balls_images2D.Add(GameObject.Find("Image3"));
@@ -430,7 +430,7 @@ public class GameController : MonoBehaviour
         Balls_images2D.Add(GameObject.Find("Image7"));
         Balls_images2D.Add(GameObject.Find("Image8"));
         Balls_images2D.Add(GameObject.Find("Image9"));
-        //¥[¸ü¨CÁû²y
+        //ï¿½[ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½y
         CueBall = GameObject.Find("CueBall");
         Balls.Add(GameObject.Find("Ball_1"));
         Balls.Add(GameObject.Find("Ball_2"));
@@ -454,7 +454,7 @@ public class GameController : MonoBehaviour
         balls[9] = GameObject.Find("Ball_9").GetComponent<Ball>();
 
 
-        //¥[¸ü¨CÁû²yªºª«²z¯S©Ê
+        //ï¿½[ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½zï¿½Sï¿½ï¿½
         CueBall_RigidBody = CueBall.GetComponentInChildren<Rigidbody>();
         for (int i = 0; i < Balls.Count; i++)
         {
@@ -475,7 +475,7 @@ public class GameController : MonoBehaviour
         start_line = GameObject.Find("Camera").GetComponent<LineRenderer>();
         Panel = GameObject.Find("Canvas/Settings");
 
-        //¯S§O©w¸q9¸¹²y
+        //ï¿½Sï¿½Oï¿½wï¿½q9ï¿½ï¿½ï¿½y
         Ace = Balls[8];
         Ace_rb = Balls_rb[8];
         Ace_image2D = Balls_images2D[8];

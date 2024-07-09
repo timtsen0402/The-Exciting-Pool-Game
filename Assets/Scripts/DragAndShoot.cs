@@ -26,38 +26,40 @@ public class DragAndShoot : MonoBehaviour
         forceBar = GameObject.Find("Canvas/forceBar").GetComponent<Slider>();
         forceBar_BKimage = GameObject.Find("Canvas/forceBar/Background").GetComponent<Image>();
         minForce_img = GameObject.Find("Canvas/forceBar/Background/minForceImg").GetComponentInChildren<RectTransform>();
-    }
-    void FixedUpdate()
-    {
 
-        if (!camera1.enabled || cueIsMove || a)
+
+    }
+    void Update()
+    {
+        if (!camera1.enabled || cueIsMove || a || Time.timeScale == 0)
             return;
         #region Drag and Shoot
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) //åµæ¸¬ä¸è‰¯
         {
+            dragLine.enabled = true;
 
             mousePressDownPos = Input.mousePosition;
 
             mousePressDownPos.z = 10f;
             Vector3 pos = camera1.ScreenToWorldPoint(mousePressDownPos);
-            dragLine.enabled = true;
+
 
             dragLine.SetPosition(0, pos);
         }
         if (Input.GetMouseButton(0))
         {
             mouseHoldPos = Input.mousePosition;
+
             mouseHoldPos.z = 10f;
             Vector3 pos = camera1.ScreenToWorldPoint(mouseHoldPos);
 
             dragLine.SetPosition(1, pos);
 
-            //©Ô°Ê²y±ì
+            //cue
             transform.position = CueBall.transform.position + offset2 * (1 + Vector3.Magnitude(mousePressDownPos - mouseHoldPos) * 0.01f);
             mag_force = Vector3.Magnitude((mousePressDownPos - mouseHoldPos) * 0.01f);
             forceBar.value = mag_force;
             forceBar_BKimage.color = new Color(mag_force * 2, 2 - mag_force * 2, 0, 1);
-
 
         }
         if (Input.GetMouseButtonUp(0))
@@ -67,14 +69,14 @@ public class DragAndShoot : MonoBehaviour
 
             if (mag_force > minForce)
             {
-                //¤O¤W­­¬°1
+                //ï¿½Oï¿½Wï¿½ï¿½ï¿½ï¿½1
                 if (mag_force > 1)
                     mag_force = 1;
-                //¥´¥X¥h¡I
+                //ï¿½ï¿½ï¿½Xï¿½hï¿½I
                 CueBall_RigidBody.velocity = -offset2.normalized * mag_force * 300f;
-                print(CueBall_RigidBody.velocity.magnitude);
-                //±ì¤l¦V«e·þ
-                transform.position -= offset2 * 0.2f;
+                //print(CueBall_RigidBody.velocity.magnitude);
+                //ï¿½ï¿½lï¿½Vï¿½eï¿½ï¿½
+                //transform.position -= offset2 * 0.2f;
 
                 a = true;
                 b = false;
@@ -88,7 +90,7 @@ public class DragAndShoot : MonoBehaviour
             forceBar.value = 0;
             forceBar_BKimage.color = Color.white;
         }
-#endregion
+        #endregion
         if (Hit_n_times == 0)
             return;
         minForce = 0.13f;
@@ -105,7 +107,7 @@ public class DragAndShoot : MonoBehaviour
     bool D_isHold = false;
 
 
-//À»¥À²y¤W¤U¥ª¥k¥|ÂI
+//ï¿½ï¿½ï¿½ï¿½ï¿½yï¿½Wï¿½Uï¿½ï¿½ï¿½kï¿½|ï¿½I
 if (CameraControl.isRotating == false)
 {
     W_isHold = false;
@@ -135,7 +137,7 @@ if (CameraControl.isRotating == false)
 
 }
 
-//¯S®íÀ»¥´
+//ï¿½Sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 if (W_isHold == true)
 {
     transform.position = _cue_ball.transform.position + CameraControl.offset2 + new Vector3(0, 0.016f, 0) +
